@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useHistory } from "react";
 import axios from "axios";
 import { BASE_URL } from "../config";
 
@@ -11,13 +11,17 @@ const tokenAuthorization = () => {
 };
 
 const Login = () => {
+    // const { push } = useHistory();
     const [login, setLogin] = useState({ username:"",password:"" });
 
     const handleChange = e => setLogin({ ...login, [e.target.name]: e.target.value });
     const handleSubmit = e => {
         e.preventDefault();
         axios.post(`${BASE_URL}/auth/login`, login)
-            .then(res => console.log(res)) // localStorage.setItem("token", res.data)
+            .then(res => {
+                localStorage.setItem("token", res.data.token);
+                // push("/view");
+            })
             .catch(err => console.error(err));
     };
 
@@ -38,7 +42,6 @@ const Login = () => {
                     onChange={handleChange}
                 />
                 <button>Login</button>
-                <button>Create Account</button>
             </form>
         </div>
         
