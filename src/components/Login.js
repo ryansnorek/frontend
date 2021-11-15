@@ -2,6 +2,7 @@ import React, { useState, useHistory } from "react";
 import axios from "axios";
 import { BASE_URL } from "../config";
 
+// For later use if needed to make requests
 const tokenAuthorization = () => {
     const token = localStorage.getItem("token");
     return axios.create({
@@ -44,7 +45,6 @@ const Login = () => {
                 <button>Login</button>
             </form>
         </div>
-        
     )
 };
 
