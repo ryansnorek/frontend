@@ -14,6 +14,7 @@ const tokenAuthorization = () => {
 const Login = () => {
     // const { push } = useHistory();
     const [login, setLogin] = useState({ username:"",password:"" });
+    const [error, setError] = useState(false);
 
     const handleChange = e => setLogin({ ...login, [e.target.name]: e.target.value });
     const handleSubmit = e => {
@@ -23,7 +24,7 @@ const Login = () => {
                 localStorage.setItem("token", res.data.token);
                 // push("/view");
             })
-            .catch(err => console.error(err));
+            .catch(err => setError(err));
     };
 
     return (
@@ -44,6 +45,7 @@ const Login = () => {
                 />
                 <button>Login</button>
             </form>
+            {error ? <p style={{color: "red"}}>invalid login</p> : ""}
         </div>
     )
 };
