@@ -15,18 +15,31 @@ const Login = () => {
     // const { push } = useHistory();
     const [login, setLogin] = useState({ username:"",password:"" });
     const [error, setError] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
-    const handleChange = e => setLogin({ ...login, [e.target.name]: e.target.value });
+    const handleChange = e => {
+        setError(false);
+        setLogin({ ...login, [e.target.name]: e.target.value })
+    };
     const handleSubmit = e => {
         e.preventDefault();
+        setIsLoading(true);
         axios.post(`${BASE_URL}/auth/login`, login)
             .then(res => {
                 localStorage.setItem("token", res.data.token);
                 // push("/view");
             })
-            .catch(err => setError(err));
+            .catch(err => setError(err))
+            .finally(() => setIsLoading(false));
     };
-
+    if (isLoading) {
+        return (
+            <div className="loading-container">
+                <div className="loading"></div>
+            </div>
+           
+        )
+    }
     return (
         <div className="login">
             <form onSubmit={handleSubmit}>
