@@ -3,7 +3,7 @@ import { useHistory } from "react-router";
 const Item = ({ item, handleEdit, handleDelete }) => {
     const { push } = useHistory();
     const handleItemClick = id => {
-        push(`items/${id}`)
+        push(`items/${id}`);
     };
     return (
         <div>
