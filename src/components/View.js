@@ -31,7 +31,6 @@ const View = () => {
     const handleChange = e => setListing({ ...listing, [e.target.name]: e.target.value })
     const submitListing = e => {
         e.preventDefault();
-
         listing.item_id = items.length;
 
         tokenAuthorization()
