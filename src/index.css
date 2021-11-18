@@ -14,6 +14,8 @@ code {
 *:focus {
   outline: none;
 }
+
+/* HEADER */
 .header {
   background-color: grey;
   height: 100px;
@@ -34,7 +36,28 @@ nav {
   box-shadow: 1px 1px 5px #4f4f4f;
 
 }
+/* VIEW */
+.view {
+  margin: 5%;
+}
 
+.item {
+  display: flex;
+  margin: 3%;
+  box-shadow: 1px 1px 5px #4f4f4f;
+}
+.item img {
+  width: 250px;
+}
+.item .right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin-left: 5%;
+}
+
+/* LOGIN */
 .login {
   margin-top: 8%;
   display: flex;
