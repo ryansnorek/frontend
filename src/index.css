@@ -11,6 +11,30 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+*:focus {
+  outline: none;
+}
+.header {
+  background-color: grey;
+  height: 100px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  box-shadow: 1px 1px 5px #4f4f4f;
+}
+nav {
+  margin-right: 15%;
+}
+.header a {
+  padding: 6%;
+  text-decoration: none;
+  color: white;
+  background-color: black;
+  margin: 0 3%;
+  box-shadow: 1px 1px 5px #4f4f4f;
+
+}
+
 .login {
   margin-top: 8%;
   display: flex;
@@ -23,8 +47,7 @@ code {
   align-items: center;
   width: 16%;
   padding: 6%;
-  border: 1px solid rgb(56, 56, 61);
-  box-shadow: 0 0 10px lightgrey;
+  box-shadow: 0 0 10px rgb(163, 163, 163);
   background-color: powderblue;
 }
 .login input {
@@ -32,15 +55,22 @@ code {
   font-size: 1.6rem;
   width: 80%;
   height: 2rem;
+  background-color: #eeeded;
+  border: none;
+  margin: 2%;
+}
+::placeholder {
+  color: #c5c5c5;
 }
 .login button {
   margin-top: 8%;
-  width: 40%;
   padding: 3% 6%;
   cursor: pointer;
-  background-color: black;
+  background-color: rgb(48, 48, 48);
   color: snow;
   font-size: 1.2rem;
+  border: none;
+  box-shadow: 0 0 10px rgb(163, 163, 163);
 }
 .login button:hover {
   background-color: #4f4f4f;
@@ -63,7 +93,4 @@ code {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
-}
-*:focus {
-  outline: none;
 }
