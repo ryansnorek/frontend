@@ -1,29 +1,33 @@
 import tokenAuthorization from "../utils/tokenAuthorization";
-import { BASE_URL } from "../config";
 import { useState, useEffect } from "react";
 import Item from "./Item";
 
 const View = () => {
     const [items, setItems] = useState([]);
     const [makingListing, setMakingListing] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    // const [editingListing, setEditingListing] = useState(false);
+    // const [errors, setErrors] = useState(false);
     const [listing, setListing] = useState({
         name: "",
         description: "",
         price: "",
-        img: ""
-    })
+        img: "",
+        item_id: ""
+    });
+
     // GET ALL ITEMS //
     useEffect(() => {
+        setIsLoading(true);
         tokenAuthorization()
             .get(`/items`)
-            .then(res => {
-                setItems(res.data)
-            })
-            .catch(err => console.log(err));
+            .then(res => setItems(res.data))
+            .catch(err => console.log(err))
+            .finally(() => setIsLoading(false));
     }, []);
 
     // MAKE NEW LISTING //
-    const handleMakeListing = () => setMakingListing(true);
+    const handleMakeListing = () => setMakingListing(!makingListing);
     const handleChange = e => setListing({ ...listing, [e.target.name]: e.target.value })
     const submitListing = e => {
         e.preventDefault();
@@ -36,19 +40,34 @@ const View = () => {
             .catch(err => console.log(err))
             .finally(() => setMakingListing(false));
     };
+
     // EDIT + DELETE //
     const handleEdit = id => {
-        // tokenAuthorization()
-        // .put(/items/${id}`)
-        // .then(res => setItems(res.data)) 
-        // .catch(err => console.log(err))
+        // setEditingListing(true);
+
+        // DISPLAY EDITING FORM
+    };
+    const submitEdit = id => {
+        // OnClick from the editing form
+        tokenAuthorization()
+            .put(`/items/${id}`) // add arguement for edits
+            .then(res => setItems(res.data)) 
+            .catch(err => console.log(err)) // setErrors
     };
     const handleDelete = id => {
         tokenAuthorization()
             .delete(`/items/${id}`)
             .then(res => setItems(res.data)) 
-            .catch(err => console.log(err))
+            .catch(err => console.log(err)) // setErrors
     };
+
+    if (isLoading) {
+        return (
+            <div className="loading-container">
+                <div className="loading"></div>
+            </div>
+        )
+    }
 
     return (
         <div className="view">
@@ -78,7 +97,7 @@ const View = () => {
                 </form>
             </div>
             }
-            {items && items.map(item => <Item item={item} handleEdit={handleEdit} handleDelete={handleDelete}/>)}
+            {items && items.map(item => <Item key={item.item_id} item={item} handleEdit={handleEdit} handleDelete={handleDelete}/>)}
         </div>
     );
 };

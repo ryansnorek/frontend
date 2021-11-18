@@ -7,6 +7,7 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import View from './components/View';
 import Header from './components/Header';
+import ViewItem from './components/ViewItem';
 
 function App() {
   return (
@@ -22,7 +23,10 @@ function App() {
         <Route path="/signup">
           <Signup/>
         </Route>
-        
+        <Route path="items/:id">
+          <ViewItem/>
+        </Route>
+
         <PrivateRoute exact path="/view" component={View}/>
 
     </div>

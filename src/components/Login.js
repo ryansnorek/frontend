@@ -26,6 +26,7 @@ const Login = () => {
             .catch(err => setError(err))
             .finally(() => setIsLoading(false));
     };
+    
     if (isLoading) {
         return (
             <div className="loading-container">

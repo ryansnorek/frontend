@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const Signup = () => {
-    const [signup, setSignup] = useState({ username:"",password:"" });
+    const [signup, setSignup] = useState({ username:"", password:"" });
     const [error, setError] = useState(false);
     // const [isLoading, setIsLoading] = useState(false);
 
@@ -11,7 +11,6 @@ const Signup = () => {
     const handleSubmit = e => {
         e.preventDefault();
         // setIsLoading(true);
-
     };
     return (
         <div className="login">
