@@ -14,7 +14,10 @@ code {
 *:focus {
   outline: none;
 }
+button {
+  cursor: pointer;
 
+}
 /* HEADER */
 .header {
   background-color: #c4ffe8;
@@ -40,7 +43,15 @@ nav {
 .view {
   margin: 5%;
 }
-
+.make-listing {
+  background-color: crimson;
+  color: snow;
+  font-weight: bold;
+  font-size: 1.5rem;
+  padding: 2% 4%;
+  cursor: pointer;
+  border-radius: 10px;
+}
 .item {
   display: flex;
   margin: 3%;
@@ -56,7 +67,40 @@ nav {
   justify-content: center;
   margin-left: 5%;
 }
+.listing {
+  box-shadow: 1px 1px 5px #4f4f4f;
+  margin: 3%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+}
+.listing form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 60%;
+}
+.listing input {
+  font-size: 1.5rem;
+  margin: 1%;
+}
+.listing button {
+  /* width: 25%; */
+}
+.edit-delete button {
+  background-color: black;
+  color: white;
+  margin: 1%;
+  text-orientation: upright;
 
+}
+.delete:hover {
+  background-color: crimson;
+}
+.edit-delete {
+  margin: 1%;
+  display: flex;
+}
 /* LOGIN */
 .login {
   margin-top: 8%;
@@ -88,7 +132,6 @@ nav {
 .login button {
   margin-top: 8%;
   padding: 3% 6%;
-  cursor: pointer;
   background-color: rgb(48, 48, 48);
   color: snow;
   font-size: 1.2rem;
