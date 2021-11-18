@@ -17,7 +17,7 @@ code {
 
 /* HEADER */
 .header {
-  background-color: grey;
+  background-color: #c4ffe8;
   height: 100px;
   display: flex;
   justify-content: flex-end;
