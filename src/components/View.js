@@ -1,7 +1,7 @@
 import tokenAuthorization from "../utils/tokenAuthorization";
 import { BASE_URL } from "../config";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import Item from "./Item";
 
 const View = () => {
     const [items, setItems] = useState([]);
@@ -10,13 +10,12 @@ const View = () => {
         name: "",
         description: "",
         price: "",
-        img: "",
-        item_id: items.length
+        img: ""
     })
     // GET ALL ITEMS //
     useEffect(() => {
         tokenAuthorization()
-            .get(`${BASE_URL}/items`)
+            .get(`/items`)
             .then(res => {
                 setItems(res.data)
             })
@@ -24,33 +23,37 @@ const View = () => {
     }, []);
 
     // MAKE NEW LISTING //
-    const handleMakeListing = e => {
-        setMakingListing(true);
-    };
+    const handleMakeListing = () => setMakingListing(true);
     const handleChange = e => setListing({ ...listing, [e.target.name]: e.target.value })
     const submitListing = e => {
         e.preventDefault();
+
+        listing.item_id = items.length;
+
         tokenAuthorization()
-            .post(`${BASE_URL}/items`, listing)
+            .post(`/items`, listing)
             .then(res => setItems(res.data))
             .catch(err => console.log(err))
-            // .finally(() => setMakingListing(false));
+            .finally(() => setMakingListing(false));
     };
-
+    // EDIT + DELETE //
+    const handleEdit = id => {
+        // tokenAuthorization()
+        // .put(/items/${id}`)
+        // .then(res => setItems(res.data)) 
+        // .catch(err => console.log(err))
+    };
     const handleDelete = id => {
-        // axios.delete(`${BASE_URL}/items/${id}`)
-        //     .then(res => setItems(res.data)) 
-        //     .catch(err => console.log(err))
+        tokenAuthorization()
+            .delete(`/items/${id}`)
+            .then(res => setItems(res.data)) 
+            .catch(err => console.log(err))
     };
-    // {/* [GET] https://african-marketplace-2.herokuapp.com/api/items/:item_id */}
-    // {/* [POST] https://african-marketplace-2.herokuapp.com/api/items */}
-    // {/* [DELETE] https://african-marketplace-2.herokuapp.com/api/items/:item_id */}
-    // {/* [PUT] https://african-marketplace-2.herokuapp.com/api/items/:item_id */}
 
     return (
         <div className="view">
             <button className="make-listing" onClick={handleMakeListing}>Make listing</button>
-            {makingListing ? 
+            {makingListing && 
             <div className="listing">
                 <form onSubmit={submitListing}>
                     <input 
@@ -73,29 +76,9 @@ const View = () => {
                     />
                     <button>Post</button>
                 </form>
-            </div> :
-            ""
+            </div>
             }
-            {items.map(item => {
-                return (
-                    <div className="item">
-                        <div className="left">
-                            <img src={item.img} alt={item.name} />
-                        </div>
-                        <div className="right">
-                            <h3>{item.name}</h3>
-                            <p>{item.description}</p>
-                            <p>${item.price}</p>
-                        </div>
-                        <div className="edit-delete">
-                            <button>Edit</button>
-                            <button className="delete" onClick={() => handleDelete(item.item_id)}>Delete</button>
-                        </div>
-                    </div>
-                )
-            })}
-
-          
+            {items && items.map(item => <Item item={item} handleEdit={handleEdit} handleDelete={handleDelete}/>)}
         </div>
     );
 };
