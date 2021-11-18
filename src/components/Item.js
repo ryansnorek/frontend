@@ -1,7 +1,13 @@
+import { useHistory } from "react-router";
+
 const Item = ({ item, handleEdit, handleDelete }) => {
+    const { push } = useHistory();
+    const handleItemClick = id => {
+        push(`items/${id}`)
+    };
     return (
         <div>
-            <div className="item">
+            <div className="item" onClick={() => handleItemClick(item.item_id)}>
                 <div className="left">
                     <img src={item.img} alt={item.name} />
                 </div>

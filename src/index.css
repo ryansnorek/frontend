@@ -50,7 +50,6 @@ nav {
   font-size: 1.5rem;
   padding: 2% 4%;
   cursor: pointer;
-  /* border-radius: 10px; */
 }
 .item {
   display: flex;
@@ -164,7 +163,6 @@ nav {
   height: 90px;
   animation: spin 2s linear infinite;
 }
-
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
