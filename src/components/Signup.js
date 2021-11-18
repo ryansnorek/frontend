@@ -14,8 +14,7 @@ const Signup = () => {
 
     };
     return (
-        <div className="signup">
-            <h1>Signup</h1>
+        <div className="login">
              <form onSubmit={handleSubmit}>
                 <input
                     name="username"
@@ -29,7 +28,7 @@ const Signup = () => {
                     value={signup.password}
                     onChange={handleChange}
                 />
-                <button>Login</button>
+                <button>Sign up</button>
             </form>
             {error ? <p style={{color: "red"}}>invalid login</p> : ""}
         </div>
