@@ -34,16 +34,19 @@ const Login = () => {
            
         )
     }
+
     return (
         <div className="login">
             <form onSubmit={handleSubmit}>
                 <input
+                    type='text'
                     name="username"
                     placeholder="username"
                     value={login.username}
                     onChange={handleChange}
                 />
                 <input
+                    type='password'
                     name="password"
                     placeholder="password"
                     value={login.password}
