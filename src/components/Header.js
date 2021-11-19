@@ -1,12 +1,15 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
  
 const Header = () => {
     return (
         <div className="header">
             <nav>
-                <Link to="/signup">Signup</Link>
-                <Link to="/login">Login</Link> 
-                <Link to="/view">Market</Link>
+                <ul>
+                 <li className="green"><NavLink to="/signup">Signup</NavLink></li>
+                 <li className="yellow"><NavLink to="/login">Login</NavLink></li>
+                 <li className="red"><NavLink to="/view">Market</NavLink></li>
+                </ul>
+
             </nav>
         </div>
     );

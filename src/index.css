@@ -16,11 +16,16 @@ code {
 }
 button {
   cursor: pointer;
-
+  border: none;
+  box-shadow: 1px 1px 1px #4f4f4f;
+}
+input:focus {
+  background-color: #eeeded;
+  border: none;
 }
 /* HEADER */
 .header {
-  background-color: #c4ffe8;
+  background-color: rgb(39, 39, 39);
   height: 100px;
   display: flex;
   justify-content: flex-end;
@@ -29,32 +34,68 @@ button {
 }
 nav {
   margin-right: 15%;
+
 }
-.header a {
-  padding: 6%;
+ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+}
+ul li a {
   text-decoration: none;
-  color: white;
-  background-color: black;
+    background-color: transparent;
+    color: #fff;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+.header li {
+  padding: 6%;
   margin: 0 3%;
   box-shadow: 1px 1px 5px #4f4f4f;
-  
+}
+.green {
+  background-color: rgb(75, 141, 75);
+}
+.green:hover {
+  background-color: rgb(55, 102, 55);
+}
+.yellow {
+  background-color: rgb(187, 187, 94);
+}
+.yellow:hover {
+  background-color: rgb(109, 109, 56);
+}
+.red {
+  background-color: rgb(199, 91, 91);
+}
+.red:hover {
+  background-color: rgb(124, 57, 57);
 }
 /* VIEW */
 .view {
   margin: 5%;
 }
 .make-listing {
-  background-color: crimson;
+  background-color: rgb(199, 91, 91);
   color: snow;
   font-weight: bold;
   font-size: 1.5rem;
   padding: 2% 4%;
   cursor: pointer;
 }
+.make-listing:hover {
+  background-color: rgb(124, 57, 57);
+}
 .item {
   display: flex;
   margin: 3%;
   box-shadow: 1px 1px 5px #4f4f4f;
+}
+.item:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+  cursor: pointer;
 }
 .item img {
   width: 250px;
@@ -84,32 +125,39 @@ nav {
 .listing input {
   font-size: 1.5rem;
   margin: 1%;
+  border: none;
+  border-bottom: 1px #eeeded solid;
 }
 .listing button {
-  background-color: crimson;
+  background-color: rgb(48, 48, 48);
   color: snow;
   font-weight: bold;
   border-radius: 10px;
-  border: none;
-  box-shadow: 1px 1px 1px #4f4f4f;
   width: 50%;
   margin-top: 2%;
   font-size: 1.2rem;
   padding: 2% 0;
 }
-.edit-delete button {
-  background-color: black;
-  color: white;
-  margin: 1%;
-  height: 20px;
-}
-.delete:hover {
-  background-color: crimson;
+.listing button:hover {
+  background-color: rgb(124, 57, 57);
 }
 .edit-delete {
-  margin: 1%;
+  height: 5%;
+  margin-top: 3%;
+  margin-left: 10%;
   display: flex;
 }
+.edit-delete button {
+  margin: 0 10px;
+  height: 20px;
+  width: 50px;
+  background-color: rgb(48, 48, 48);
+  color: snow;
+}
+.edit-delete button:hover {
+  background-color: #4f4f4f;
+  cursor: default;
+};
 /* LOGIN */
 .login {
   margin-top: 8%;
@@ -124,14 +172,15 @@ nav {
   width: 16%;
   padding: 6%;
   box-shadow: 0 0 10px rgb(163, 163, 163);
-  background-color: powderblue;
+  background-color: rgb(187, 187, 94);
+}
+.signup form {
+  background-color: rgb(75, 141, 75);
 }
 .login input {
-  text-align: center;
   font-size: 1.6rem;
   width: 80%;
   height: 2rem;
-  background-color: #eeeded;
   border: none;
   margin: 2%;
 }
@@ -148,7 +197,10 @@ nav {
   box-shadow: 0 0 10px rgb(163, 163, 163);
 }
 .login button:hover {
-  background-color: #4f4f4f;
+  background-color: rgb(109, 109, 56);
+}
+.signup button:hover {
+  background-color: rgb(55, 102, 55);
 }
 .loading-container {
   width: 100%;

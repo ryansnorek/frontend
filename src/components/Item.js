@@ -17,7 +17,7 @@ const Item = ({ item, handleEdit, handleDelete }) => {
                     <p>${item.price}</p>
                 </div>
                 <div className="edit-delete">
-                    <button onClick={() => handleEdit(item.item_id)}>Edit</button>
+                    <button className="edit" onClick={() => handleEdit(item.item_id)}>Edit</button>
                     <button className="delete" onClick={() => handleDelete(item.item_id)}>Delete</button>
                 </div>
             </div>
