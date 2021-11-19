@@ -12,9 +12,7 @@ const View = () => {
     const [listing, setListing] = useState({
         name: "",
         description: "",
-        price: "",
-        img: "",
-        item_id: ""
+        price: ""
     });
 
     // GET ALL ITEMS //
@@ -32,11 +30,12 @@ const View = () => {
     const handleChange = e => setListing({ ...listing, [e.target.name]: e.target.value })
     const submitListing = e => {
         e.preventDefault();
-        listing.item_id = items.length;
 
         tokenAuthorization()
             .post(`/items`, listing)
-            .then(res => setItems(res.data))
+            .then(res => {
+                window.location.reload(false);
+            })
             .catch(err => console.log(err))
             .finally(() => setMakingListing(false));
     };
