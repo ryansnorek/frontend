@@ -1,12 +1,13 @@
 import tokenAuthorization from "../utils/tokenAuthorization";
 import { useState, useEffect } from "react";
 import Item from "./Item";
+import Form from "./Form";
 
 const View = () => {
     const [items, setItems] = useState([]);
     const [makingListing, setMakingListing] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-    // const [editingListing, setEditingListing] = useState(false);
+    const [editingListing, setEditingListing] = useState(false);
     // const [errors, setErrors] = useState(false);
     const [listing, setListing] = useState({
         name: "",
@@ -42,7 +43,7 @@ const View = () => {
 
     // EDIT + DELETE //
     const handleEdit = id => {
-        // setEditingListing(true);
+        setEditingListing(true);
 
         // DISPLAY EDITING FORM
     };
@@ -51,13 +52,13 @@ const View = () => {
         tokenAuthorization()
             .put(`/items/${id}`) // add arguement for edits
             .then(res => setItems(res.data)) 
-            .catch(err => console.log(err)) // setErrors
+            .catch(err => console.log(err)); // setErrors
     };
     const handleDelete = id => {
         tokenAuthorization()
             .delete(`/items/${id}`)
             .then(res => setItems(res.data)) 
-            .catch(err => console.log(err)) // setErrors
+            .catch(err => console.log(err)); // setErrors
     };
 
     if (isLoading) {
@@ -65,37 +66,13 @@ const View = () => {
             <div className="loading-container">
                 <div className="loading"></div>
             </div>
-        )
-    }
+        );
+    };
 
     return (
         <div className="view">
             <button className="make-listing" onClick={handleMakeListing}>Make listing</button>
-            {makingListing && 
-            <div className="listing">
-                <form onSubmit={submitListing}>
-                    <input 
-                        name="name"
-                        placeholder="item name"
-                        value={listing.name}
-                        onChange={handleChange}
-                    />
-                    <input 
-                        name="description"
-                        placeholder="description"
-                        value={listing.description}
-                        onChange={handleChange}
-                    />
-                    <input 
-                        name="price"
-                        placeholder="price"
-                        value={listing.price}
-                        onChange={handleChange}
-                    />
-                    <button>Post</button>
-                </form>
-            </div>
-            }
+            {makingListing && <Form submit={submitListing} values={listing} change={handleChange}/>}
             {items && items.map(item => <Item key={item.item_id} item={item} handleEdit={handleEdit} handleDelete={handleDelete}/>)}
         </div>
     );
