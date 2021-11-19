@@ -101,6 +101,7 @@ ul li a {
     color: #fff;
     padding: 10px 20px;
     font-weight: bold;
+    font-size: 1.2rem;
 }
 .header li {
   padding: 6%;
@@ -217,6 +218,7 @@ ul li a {
   background-color: #333333;
   cursor: default;
 };
+
 /* LOGIN + SIGNUP */
 
 .login {
@@ -288,4 +290,15 @@ ul li a {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+.edit-form form {
+  display: flex;
+  flex-direction: column;
+  font-size: 2.5rem;
+  margin-top: 26%;
+}
+.edit-form input {
+  border: none;
+  border-bottom: 1px solid #eeeded;
+  margin: 1%;
 }
