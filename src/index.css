@@ -41,6 +41,9 @@ h2 {
  color: #4f4f4f;
  user-select: none;
 }
+h2:hover {
+  transform: skew(-10deg);
+}
 ul {
   list-style: none;
   display: flex;
