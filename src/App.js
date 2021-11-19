@@ -23,12 +23,9 @@ function App() {
         <Route path="/signup">
           <Signup/>
         </Route>
-        <Route path="items/:id">
-          <ViewItem/>
-        </Route>
-
+        
+        <PrivateRoute exact path="/items/:id" component={ViewItem}/>
         <PrivateRoute exact path="/view" component={View}/>
-
     </div>
   );
 }

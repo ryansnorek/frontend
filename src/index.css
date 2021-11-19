@@ -39,6 +39,7 @@ h2 {
  font-size: 2rem;
  margin-left: 5%;
  color: #4f4f4f;
+ user-select: none;
 }
 ul {
   list-style: none;
