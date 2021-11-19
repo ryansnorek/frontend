@@ -19,10 +19,11 @@ const Signup = () => {
             .then(res => {
                 console.log(res)
                 localStorage.setItem("token", res.data.token);
-                push("/view");
+                window.location.reload(false);
             })
             .catch(err => setError(err))
             .finally(() => setIsLoading(false));
+        push("/view");
     };
     return (
         <div className="login signup">
