@@ -13,7 +13,7 @@ const Signup = () => {
         // setIsLoading(true);
     };
     return (
-        <div className="login">
+        <div className="login signup">
              <form onSubmit={handleSubmit}>
                 <input
                     name="username"
